@@ -314,10 +314,14 @@ table.reference td{
 	clear:both;
 }
 
-.user{
+.lang, .user{
 	float:right;
 	font-weight:bold;
 	font-style: italic;
 	color: blue;
 	padding-right: 5px; 
+}
+
+.lang a {
+	color: blue;
 }

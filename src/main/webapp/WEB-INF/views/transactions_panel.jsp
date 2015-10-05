@@ -9,7 +9,8 @@
 </head>
 <body>
 <div class="container">
-	<section id="content">	
+	<section id="content">
+	<%@ include file="/WEB-INF/views/lang.jsp" %>
 	<%@ include file="/WEB-INF/views/top.jsp" %>
 	<form method="post" action="">
 			<h1><fmt:message key="transactions_panel.heading"/></h1>

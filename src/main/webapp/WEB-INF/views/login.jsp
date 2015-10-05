@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <title><fmt:message key="login.title"/></title>
+  <title><:message key="login.title"/></title>
 <link rel="stylesheet" type="text/css" href="<c:url value="resources/style.css"/>"/>
 </head>
 <body>
 <div class="container">
 	<section id="content">
+		<%@ include file="/WEB-INF/views/lang.jsp" %>
 		<form:form method="post" commandName="connection">
 			<h1><fmt:message key="login.heading"/></h1>
 			<div>
