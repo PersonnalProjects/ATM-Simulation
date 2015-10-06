@@ -16,10 +16,10 @@
 			<h1><fmt:message key="transactions_panel.heading"/></h1>
 			
 			<ul class="menu">
-				<li class="radius" ><a   href="<c:url value="/deposit.htm"/>" >Deposit</a> </li  >
-				<li class="radius"><a  href="<c:url value="/withdrawal.htm"/>" >Withdrawal</a></li>
-				<li class="radius"><a href="<c:url value="/transactions_history.htm"/>" >History</a></li>
-				<li class="radius"><a href="<c:url value="/balance.htm"/>" >Balance</a></li>	
+				<li class="radius" ><a   href="<c:url value="/deposit.htm"/>" ><fmt:message key="deposit.title"/></a> </li  >
+				<li class="radius"><a  href="<c:url value="/withdrawal.htm"/>" ><fmt:message key="withdrawal.title"/></a></li>
+				<li class="radius"><a href="<c:url value="/transactions_history.htm"/>" ><fmt:message key="transactions_history.title"/></a></li>
+				<li class="radius"><a href="<c:url value="/balance.htm"/>" ><fmt:message key="balance.title"/></a></li>
 			<ul>	
 		</form><!-- form -->		
 	</section><!-- content -->

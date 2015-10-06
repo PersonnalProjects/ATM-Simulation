@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <title><:message key="login.title"/></title>
+  <title><fmt:message key="login.title"/></title>
 <link rel="stylesheet" type="text/css" href="<c:url value="resources/style.css"/>"/>
 </head>
 <body>
@@ -14,7 +14,8 @@
 		<form:form method="post" commandName="connection">
 			<h1><fmt:message key="login.heading"/></h1>
 			<div>
-				<form:input  class="connection" placeholder="CardNumber"  id="cardNumber" path="cardNumber" required="true"/>
+			 	<fmt:message key="login.card.number" var="cardNo" />
+				<form:input  class="connection" placeholder="${cardNo}"   id="cardNumber" path="cardNumber" required="true"/>
 			</div>
 			<div>
 				<form:input  type="password" placeholder="Nip"  id="nip" path="nip" required="true"/>
@@ -26,7 +27,8 @@
 				<form:errors path="nip" cssClass="error"/>
 			</div>			
 			<div>
-				<input type="submit" value="Log in" />
+				<fmt:message key="login.submit" var="submit" />
+				<input type="submit" value="${submit}" />
 			</div>
 		</form:form><!-- form -->
 	</section><!-- content -->
