@@ -14,6 +14,9 @@ import org.projects.spring.atm.simulation.service.TransactionManager;
  *
  */
 //import org.springframework.web.servlet.mvc.SimpleFormController;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.servlet.mvc.Controller;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +31,7 @@ import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class TransactionsHistoryControler implements Controller {
@@ -46,11 +50,11 @@ public class TransactionsHistoryControler implements Controller {
 		this.transactions = transactions;
 	}
 	
-	
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		
-		logger.info("TransactionsHistoryControler : handleRequest() - Starting............");
+
+
+        logger.info("TransactionsHistoryControler : handleRequest() - Starting............");
         HttpSession session = request.getSession();
         if( session.getAttribute(Connection.ATT_CARD_NUMBER) == null)
         	return new ModelAndView(new RedirectView("login.htm"));        

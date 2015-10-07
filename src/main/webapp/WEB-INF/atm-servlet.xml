@@ -11,7 +11,7 @@
   <!-- the application context definition for the springapp DispatcherServlet -->
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="resources/messages"/>
+        <property name="basename" value="/resources/messages"/>
     </bean>
 
 

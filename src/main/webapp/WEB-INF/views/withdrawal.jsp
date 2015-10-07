@@ -15,7 +15,7 @@
 			
 			<table class="reference">
 				<tr>
-					<td>Withdrawal Amount : </td>
+					<td><fmt:message key="withdrawal.amount"/> : </td>
 					<td> <form:input path="amount"/></td>					
 				</tr>			
 			</table>	
@@ -23,11 +23,12 @@
 				<form:errors path="amount" cssClass="error"/>
 			</div>
 			<div>
-				<input type="submit" value="Execute" />
+				<fmt:message key="execute.button" var="executeButton" />
+				<input type="submit" value="${executeButton}" />
 			</div>	
 		</form:form><!-- form -->
 		<div>
-			<a href="<c:url value="transactions_panel.htm"/>">Back</a>
+			<a href="<c:url value="transactions_panel.htm"/>"><fmt:message key="back.link"/></a>
 		</div>
 	</section><!-- content -->
 </div><!-- container -->

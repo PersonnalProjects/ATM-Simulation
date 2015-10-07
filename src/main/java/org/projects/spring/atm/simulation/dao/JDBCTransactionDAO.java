@@ -24,11 +24,11 @@ public class JDBCTransactionDAO extends SimpleJdbcDaoSupport implements Transact
 	}
 
 	@Override
-	public Transaction CreateTransaction(double amount_, Boolean status_, String date_, String type_, String accountNumber_) {
+	public Transaction CreateTransaction(double amount_, Boolean status_, String date_, Transaction.transactionType type_, String accountNumber_) {
 		
 		logger.info("JDBCTransactionDAO : CreateTransaction() - Starting............");
 		Transaction transaction;
-		if( Transaction.deposit.equalsIgnoreCase( type_))
+		if( Transaction.transactionType.DEPOSIT == type_ )
 			transaction = this.createDeposit( amount_,  status_,  date_,  accountNumber_ );
 		else 
 			transaction = this.createWithdrawal( amount_,  status_,  date_,  accountNumber_ );

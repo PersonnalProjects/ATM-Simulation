@@ -89,7 +89,7 @@ public class DepositControler extends SimpleFormController {
 			status = true;				
 		
 		//saving the transaction ( even if saving the account failed)
-		Transaction transaction = transactionDAO.CreateTransaction(depositForm.getAmount(), status,  nowString, Transaction.deposit, account.getAccountNumber());
+		Transaction transaction = transactionDAO.CreateTransaction(depositForm.getAmount(), status,  nowString, Transaction.transactionType.DEPOSIT, account.getAccountNumber());
 		transactionDAO.SaveTransaction(transaction);	
 		
 		

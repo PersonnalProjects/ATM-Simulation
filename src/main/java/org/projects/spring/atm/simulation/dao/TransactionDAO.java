@@ -13,6 +13,6 @@ public interface TransactionDAO {
 	
 	public List<Transaction> getTransactions(String accountNumber);
 	public boolean SaveTransaction(Transaction transaction);
-	public Transaction CreateTransaction(double amount, Boolean status, String date, String type, String accountNumber);
+	public Transaction CreateTransaction(double amount, Boolean status, String date, Transaction.transactionType type, String accountNumber);
 
 }

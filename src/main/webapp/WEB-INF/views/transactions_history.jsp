@@ -31,7 +31,7 @@
 			</table>
 		</form:form><!-- form -->
 		<div>
-			<br><a href="<c:url value="transactions_panel.htm"/>">Back</a>
+			<a href="<c:url value="transactions_panel.htm"/>"><fmt:message key="back.link"/></a>
 		</div>		
 	</section><!-- content -->
 </div><!-- container -->

@@ -81,7 +81,7 @@ public class WithdrawalControler extends SimpleFormController {
 				status = true;
 			
 			//saving the transaction ( even if saving the account failed)
-			Transaction transaction = transactionDAO.CreateTransaction(withdrawalForm.getAmount(), status,  nowString, Transaction.withdrawal, account.getAccountNumber());
+			Transaction transaction = transactionDAO.CreateTransaction(withdrawalForm.getAmount(), status,  nowString, Transaction.transactionType.WITHDRAWAL, account.getAccountNumber());
 			transactionDAO.SaveTransaction(transaction);				
 		}
 		else
@@ -92,7 +92,7 @@ public class WithdrawalControler extends SimpleFormController {
 			//errors.rejectValue("amount", "error.insufficient-fund", null, "Insufficient fund.");
 			
 			//saving the transaction ( even if saving the account failed)
-			Transaction transaction = transactionDAO.CreateTransaction(withdrawalForm.getAmount(), status,  nowString, Transaction.withdrawal, account.getAccountNumber());
+			Transaction transaction = transactionDAO.CreateTransaction(withdrawalForm.getAmount(), status,  nowString, Transaction.transactionType.WITHDRAWAL, account.getAccountNumber());
 			transactionDAO.SaveTransaction(transaction);
 			
 			return new ModelAndView( new RedirectView("withdrawal.htm"));

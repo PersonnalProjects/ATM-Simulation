@@ -15,14 +15,14 @@
 			
 			<table class="reference">
 				<tr>
-					<td>The balance of account your is : </td>
+					<td><fmt:message key="balance.account"/> : </td>
 					<td> <c:out value="${balance}"/></td>
 				</tr>
 
 			</table>	
 		</form><!-- form -->
 		<div>
-			<br><a href="<c:url value="transactions_panel.htm"/>">Back</a>
+			<a href="<c:url value="transactions_panel.htm"/>"><fmt:message key="back.link"/></a>
 		</div>		
 	</section><!-- content -->
 </div><!-- container -->
