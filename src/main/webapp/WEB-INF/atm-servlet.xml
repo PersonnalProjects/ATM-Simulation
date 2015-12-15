@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+  <!-- the application context definition for the springapp DispatcherServlet -->
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/resources/messages"/>
+    </bean>
+
+
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="fr" />
+    </bean>
+
+
+
+
+
+    <mvc:interceptors>
+        <bean  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang" />
+        </bean>
+    </mvc:interceptors>
+
+
+
+
+  <!--  Controlers -->
+
+    <bean name="/login.htm"  class="org.projects.spring.atm.simulation.controller.ConnectionFormControler">
+        <property name="sessionForm" value="false"/>
+        <property  name="commandName" value="connection"/>
+        <property name="commandClass" value="org.projects.spring.atm.simulation.service.Connection"/>
+        <property name="validator" ref="connectionValidator">
+        </property>
+        <property name="formView" value="login"/>
+        <property name="successView" value="transactions_panel.htm"/>
+        <property name="customerCardDAO" ref="customerCardDAO"/>
+    </bean>
+    <bean  id="connectionValidator" class="org.projects.spring.atm.simulation.validator.ConnectionValidator">
+  		<property name="customerCardDAO" ref="customerCardDAO"/>
+    </bean>
+
+
+
+    <bean name="/transactions_panel.htm" class="org.projects.spring.atm.simulation.controller.TransactionsPanelControler">
+    </bean>
+
+
+    <bean name="/transactions_history.htm" class="org.projects.spring.atm.simulation.controller.TransactionsHistoryControler">
+    	<property name="transactions" ref="transactions"/>
+    </bean>
+
+
+    <bean name="/balance.htm" class="org.projects.spring.atm.simulation.controller.BalanceControler">
+    	   <property name="accountDAO" ref="accountDAO"/>
+    </bean>
+
+
+    <bean name="/deposit.htm"  class="org.projects.spring.atm.simulation.controller.DepositControler">
+        <property name="sessionForm" value="false"/>
+        <property  name="commandName" value="depositForm"/>
+        <property name="commandClass" value="org.projects.spring.atm.simulation.service.DepositManager"/>
+        <property name="validator" ref="depositValidator"/>
+        <property name="formView" value="deposit"/>
+        <property name="successView" value="transactions_panel.htm"/>
+   		<property name="accountDAO" ref="accountDAO"/>
+   		<property name="transactionDAO" ref="transactionDAO"/>
+   </bean>
+	<bean  id="depositValidator" class="org.projects.spring.atm.simulation.validator.DepositValidator">
+	 		<property name="accountDAO" ref="accountDAO"/>
+			<property name="transactionDAO" ref="transactionDAO"/>
+	</bean>
+
+    <bean name="/withdrawal.htm"  class="org.projects.spring.atm.simulation.controller.WithdrawalControler">
+        <property name="sessionForm" value="false"/>
+        <property  name="commandName" value="withdrawalForm"/>
+        <property name="commandClass" value="org.projects.spring.atm.simulation.service.WithdrawalManager"/>
+        <property name="validator"  ref="withdrawalValidator"/>
+        <property name="formView" value="withdrawal"/>
+        <property name="successView" value="transactions_panel.htm"/>
+   		<property name="accountDAO" ref="accountDAO"/>
+   		<property name="transactionDAO" ref="transactionDAO"/>
+    </bean>
+     <bean  id="withdrawalValidator" class="org.projects.spring.atm.simulation.validator.WithdrawalValidator">
+    		<property name="accountDAO" ref="accountDAO"/>
+    		<property name="transactionDAO" ref="transactionDAO"/>
+    </bean>
+
+
+    <bean name="/disconnection.htm" class="org.projects.spring.atm.simulation.controller.DisconnectionControler">
+    </bean>
+
+
+    <!--  ViewResolver -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+</beans>
